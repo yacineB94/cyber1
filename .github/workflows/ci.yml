@@ -1,0 +1,14 @@
+name: Deploy to Debian
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: self-hosted  # Indispensable si tu utilises ton propre Runner
+    steps:
+      - uses: actions/checkout@v3
+      - name: Copy files to Nginx
+        run: |
+          sudo cp index.html /var/www/html/
